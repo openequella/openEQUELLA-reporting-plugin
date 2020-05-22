@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<repository name='Update Site' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1'>
+  <properties size='2'>
+    <property name='p2.timestamp' value='1590129212760'/>
+    <property name='p2.compressed' value='true'/>
+  </properties>
+  <mappings size='3'>
+    <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
+    <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
+    <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
+  </mappings>
+  <artifacts size='5'>
+    <artifact classifier='org.eclipse.update.feature' id='openEQUELLA_Reporting_Plugins' version='1.0.0.alpha'>
+      <properties size='2'>
+        <property name='download.contentType' value='application/zip'/>
+        <property name='download.size' value='485'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.thoughtworks.xstream' version='1.3.1.v201111240924'>
+      <properties size='5'>
+        <property name='artifact.size' value='480105'/>
+        <property name='download.size' value='480105'/>
+        <property name='download.md5' value='62938d6a658a2ecfd8d0e0f88221e589'/>
+        <property name='download.checksum.md5' value='62938d6a658a2ecfd8d0e0f88221e589'/>
+        <property name='download.checksum.sha-256' value='168c0e43f11ad7fc133af938d465c23464b981420f255ed56a7434fc9b75a43f'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.tle.reporting.common' version='6.3.0.20141006'>
+      <properties size='1'>
+        <property name='download.size' value='6647'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.tle.reporting.oda' version='6.3.0.20141006'>
+      <properties size='1'>
+        <property name='download.size' value='165311'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='com.tle.reporting.oda.connectors' version='6.3.0.20141006'>
+      <properties size='1'>
+        <property name='download.size' value='14700'/>
+      </properties>
+    </artifact>
+  </artifacts>
+</repository>

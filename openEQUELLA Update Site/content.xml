@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?metadataRepository version='1.2.0'?>
+<repository name='Update Site' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'>
+  <properties size='2'>
+    <property name='p2.timestamp' value='1590129920450'/>
+    <property name='p2.compressed' value='true'/>
+  </properties>
+  <units size='7'>
+    <unit id='Default' version='1.0.0.2---8DYgQB'>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='Uncategorized'/>
+        <property name='org.eclipse.equinox.p2.description' value='Default category for otherwise uncategorized features'/>
+        <property name='org.eclipse.equinox.p2.type.category' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='Default' version='1.0.0.2---8DYgQB'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='openEQUELLA_Reporting_Plugins.feature.group' range='[1.0.0.alpha,1.0.0.alpha]'/>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+    </unit>
+    <unit id='com.tle.reporting.oda' version='6.3.0.20141006' generation='2'>
+      <update id='com.tle.reporting.oda' range='[0.0.0,6.3.0.20141006)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='TLE ODA Plug-in'/>
+      </properties>
+      <provides size='15'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.tle.reporting.oda' version='6.3.0.20141006'/>
+        <provided namespace='osgi.bundle' name='com.tle.reporting.oda' version='6.3.0.20141006'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.i18n' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.ui' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.ui.icons' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.ui.jdbc.ui.editors' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.ui.jdbc.ui.model' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.ui.jdbc.ui.preference' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.ui.jdbc.ui.provider' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.ui.jdbc.ui.util' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.webservice' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.birt.report.data.oda.jdbc.ui.nls' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='com.tle.reporting.oda' version='6.3.0.20141006'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='14'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='org.eclipse.datatools.connectivity.oda.design.ui' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='org.eclipse.birt.report.data.oda.jdbc' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='com.tle.reporting.common' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.birt.report.engine' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.datatools.connectivity.oda' range='0.0.0'/>
+        <required namespace='java.package' name='com.thoughtworks.xstream' range='0.0.0'/>
+        <required namespace='java.package' name='org.apache.commons.codec.binary' range='1.3.0'/>
+        <required namespace='java.package' name='org.apache.commons.httpclient' range='0.0.0'/>
+        <required namespace='java.package' name='org.apache.commons.httpclient.methods' range='0.0.0'/>
+        <required namespace='java.package' name='org.apache.commons.httpclient.params' range='0.0.0'/>
+        <required namespace='java.package' name='org.apache.commons.httpclient.protocol' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.6))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.tle.reporting.oda' version='6.3.0.20141006'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: com.tle.reporting.oda;singleton:=true&#xA;Bundle-Version: 6.3.0.20141006
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='openEQUELLA_Reporting_Plugins.feature.jar' version='1.0.0.alpha'>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='OpenEQUELLA_Reporting_Plugins'/>
+        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='openEQUELLA_Reporting_Plugins.feature.jar' version='1.0.0.alpha'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='openEQUELLA_Reporting_Plugins' version='1.0.0.alpha'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='openEQUELLA_Reporting_Plugins' version='1.0.0.alpha'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size='1'>
+        <license uri='http://www.example.com/license' url='http://www.example.com/license'>
+          [Enter License Description here.]
+        </license>
+      </licenses>
+      <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+        [Enter Copyright Description here.]
+      </copyright>
+    </unit>
+    <unit id='com.tle.reporting.oda.connectors' version='6.3.0.20141006' generation='2'>
+      <update id='com.tle.reporting.oda.connectors' range='[0.0.0,6.3.0.20141006)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='TLE Connectors ODA Plug-in'/>
+      </properties>
+      <provides size='8'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.tle.reporting.oda.connectors' version='6.3.0.20141006'/>
+        <provided namespace='osgi.bundle' name='com.tle.reporting.oda.connectors' version='6.3.0.20141006'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.connectors' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.connectors.i18n' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.oda.connectors.ui' version='0.0.0'/>
+        <provided namespace='java.package' name='org.eclipse.birt.report.data.oda.jdbc.ui.nls' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='com.tle.reporting.oda.connectors' version='6.3.0.20141006'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='6'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='org.eclipse.datatools.connectivity.oda.design.ui' range='0.0.0' optional='true' greedy='false'/>
+        <required namespace='osgi.bundle' name='org.eclipse.birt.report.engine' range='2.3.1'/>
+        <required namespace='osgi.bundle' name='com.tle.reporting.oda' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='com.tle.reporting.common' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.6))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.tle.reporting.oda.connectors' version='6.3.0.20141006'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: com.tle.reporting.oda.connectors;singleton:=true&#xA;Bundle-Version: 6.3.0.20141006
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='com.tle.reporting.common' version='6.3.0.20141006' singleton='false' generation='2'>
+      <update id='com.tle.reporting.common' range='[0.0.0,6.3.0.20141006)' severity='0'/>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.name' value='TLE Reporting Common'/>
+      </properties>
+      <provides size='6'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.tle.reporting.common' version='6.3.0.20141006'/>
+        <provided namespace='osgi.bundle' name='com.tle.reporting.common' version='6.3.0.20141006'/>
+        <provided namespace='java.package' name='com.tle.reporting' version='0.0.0'/>
+        <provided namespace='java.package' name='com.tle.reporting.schema' version='0.0.0'/>
+        <provided namespace='osgi.identity' name='com.tle.reporting.common' version='6.3.0.20141006'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='2'>
+        <required namespace='osgi.bundle' name='org.eclipse.datatools.connectivity.oda' range='0.0.0'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.6))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.tle.reporting.common' version='6.3.0.20141006'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: com.tle.reporting.common&#xA;Bundle-Version: 6.3.0.20141006
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='openEQUELLA_Reporting_Plugins.feature.group' version='1.0.0.alpha' singleton='false'>
+      <update id='openEQUELLA_Reporting_Plugins.feature.group' range='[0.0.0,1.0.0.alpha)' severity='0'/>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='OpenEQUELLA_Reporting_Plugins'/>
+        <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='openEQUELLA_Reporting_Plugins.feature.group' version='1.0.0.alpha'/>
+      </provides>
+      <requires size='5'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.thoughtworks.xstream' range='[1.3.1.v201111240924,1.3.1.v201111240924]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.tle.reporting.common' range='[6.3.0.20141006,6.3.0.20141006]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.tle.reporting.oda' range='[6.3.0.20141006,6.3.0.20141006]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='com.tle.reporting.oda.connectors' range='[6.3.0.20141006,6.3.0.20141006]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='openEQUELLA_Reporting_Plugins.feature.jar' range='[1.0.0.alpha,1.0.0.alpha]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license uri='http://www.example.com/license' url='http://www.example.com/license'>
+          [Enter License Description here.]
+        </license>
+      </licenses>
+      <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+        [Enter Copyright Description here.]
+      </copyright>
+    </unit>
+    <unit id='com.thoughtworks.xstream' version='1.3.1.v201111240924' singleton='false' generation='2'>
+      <update id='com.thoughtworks.xstream' range='[0.0.0,1.3.1.v201111240924)' severity='0'/>
+      <properties size='5'>
+        <property name='df_LT.pluginName' value='XStream'/>
+        <property name='df_LT.providerName' value='Eclipse Orbit'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+        <property name='org.eclipse.equinox.p2.bundle.localization' value='plugin'/>
+      </properties>
+      <provides size='26'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='com.thoughtworks.xstream' version='1.3.1.v201111240924'/>
+        <provided namespace='osgi.bundle' name='com.thoughtworks.xstream' version='1.3.1.v201111240924'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.alias' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.annotations' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.converters' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.converters.basic' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.converters.collections' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.converters.enums' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.converters.extended' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.converters.javabean' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.converters.reflection' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.core' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.core.util' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.io' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.io.binary' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.io.copy' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.io.json' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.io.path' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.io.xml' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.io.xml.xppdom' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.mapper' version='1.3.1'/>
+        <provided namespace='java.package' name='com.thoughtworks.xstream.persistence' version='1.3.1'/>
+        <provided namespace='osgi.identity' name='com.thoughtworks.xstream' version='1.3.1.v201111240924'>
+          <properties size='1'>
+            <property name='type' value='osgi.bundle'/>
+          </properties>
+        </provided>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='25'>
+        <required namespace='java.package' name='javax.security.auth' range='0.0.0'/>
+        <required namespace='java.package' name='javax.swing' range='0.0.0'/>
+        <required namespace='java.package' name='javax.swing.plaf' range='0.0.0'/>
+        <required namespace='java.package' name='javax.xml.datatype' range='0.0.0'/>
+        <required namespace='java.package' name='javax.xml.namespace' range='0.0.0'/>
+        <required namespace='java.package' name='javax.xml.parsers' range='0.0.0'/>
+        <required namespace='java.package' name='javax.xml.stream' range='[1.0.1,2.0.0)'/>
+        <required namespace='java.package' name='javax.xml.transform.sax' range='0.0.0'/>
+        <required namespace='java.package' name='net.sf.cglib.proxy' range='[2.2.0,3.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='nu.xom' range='[1.1.0,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.codehaus.jettison' range='[1.0.1,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.codehaus.jettison.mapped' range='[1.0.1,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.dom4j' range='[1.6.1,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.dom4j.io' range='[1.6.1,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.dom4j.tree' range='[1.6.1,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.jdom' range='[1.1.0,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.jdom.input' range='[1.1.0,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.joda.time' range='[1.6.0,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.joda.time.format' range='[1.6.0,2.0.0)' optional='true' greedy='false'/>
+        <required namespace='java.package' name='org.w3c.dom' range='0.0.0'/>
+        <required namespace='java.package' name='org.xml.sax' range='0.0.0'/>
+        <required namespace='java.package' name='org.xml.sax.helpers' range='0.0.0'/>
+        <required namespace='java.package' name='org.xmlpull.mxp1' range='[1.1.3.4,2.0.0)'/>
+        <required namespace='java.package' name='org.xmlpull.v1' range='[1.1.3.4,2.0.0)'/>
+        <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.5))'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='com.thoughtworks.xstream' version='1.3.1.v201111240924'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-SymbolicName: com.thoughtworks.xstream&#xA;Bundle-Version: 1.3.1.v201111240924
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+  </units>
+</repository>
