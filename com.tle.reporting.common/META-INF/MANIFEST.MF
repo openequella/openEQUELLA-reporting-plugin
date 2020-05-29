@@ -1,10 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: TLE Reporting Common
+Bundle-Name: openEQUELLA Reporting Common
 Bundle-SymbolicName: com.tle.reporting.common
-Bundle-Version: 6.3.0.20141006
-Export-Package: com.tle.reporting,
+Bundle-Version: 2020.2.0.2020052901
+Export-Package: com.tle.reporting;uses:="org.eclipse.datatools.connectivity.oda",
  com.tle.reporting.schema
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .
 Require-Bundle: org.eclipse.datatools.connectivity.oda
+Bundle-Vendor: Apereo
