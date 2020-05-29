@@ -20,5 +20,17 @@ Follow these steps to build the openEQUELLA BIRT plugins.
 
 7. From the "Add Content" dialog that comes up, choose "Installation" and browse to the root of the BIRT folder (the folder that includes the eclipse.ini and executable).  Click "Finish", but remain in the "New Target Definition" dialog.  
 
-8. If we were to finish creating the Target Platform now, our plugins would mostly build, but would still be missing XStream dependencies.  From the "New Target Definition" dialog, click "Add..." again, but this time choose "Software Site".  
+8. If we were to finish creating the Target Platform now, our plugins would mostly build, but would still be missing XStream dependencies.  From the "New Target Definition" dialog, click "Add..." again, but this time choose "Software Site".  Click "Add..." and an "Add Repository" dialog comes up.  Enter "Orbit"* in the Name field, and paste https://download.eclipse.org/tools/orbit/downloads/drops/R20200224183213/repository into the Location field.  Once you click "Add", wait for the list of plugins to download and display.
+
+9. In the "type filter text" box, enter "xstream", and tick the box next to XStream that displays in the tree below.  Now click "Finish".
+
+10. From the "Edit Target Definition" dialog, click "Finish" again.  Now click the checkbox against your newly added Target definition.  Click "Apply and Close".  After a short build time, your compilation errors should disappear.
+
+11. Right click on the "openEQUELLA Reporting Plugins" project and choose "Export..."->"Plug-in Development"->"Deployable features". Select a destination directory and click Finish.
+
+12. The contents of the "plugins" sub-directory of the export directory in the previous step are deployable to BIRT.  Copy all of these jar files into the "dropins" directory of you BIRT designer installation.
+
+13. Start the BIRT designer and follow the section at the top of this document titled "Report Designers".
+
+* *Orbit is kind-of the equivalent of a Maven Central for Eclipse plugins, however they have a strict policy on what gets into the repository.  Luckily for us they have an XStream plugin (this is actually just a plain XStream jar that has been modified to contain OSGI plugin information).  If we needed a dependency that didn't already exist as an OSGI plugin, you'd probably have to manually create one and commit it into the openEQUELLA-reporting-plugin repository. (But there may be a better way)*
 
