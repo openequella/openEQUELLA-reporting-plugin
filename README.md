@@ -6,6 +6,8 @@ For help with designing BIRT reports using these plugins, visit the [reporting t
 
 ## Developers
 
+### Building
+
 Follow these steps to build the openEQUELLA BIRT plugins.
 
 1. Download the BIRT "All-in-One" package from https://download.eclipse.org/birt/downloads/ and unzip it into a permanent directory, i.e. this is "installing" it. Don't get the Framework or Runtime downloads; the reason being is that the version of Eclipse you develop with is likely to be a different version to the BIRT downloads (the latest build of BIRT is from 2018, using Eclipse Neon) and you don't want to rely on your development Eclipse's plugins to fill the voids of the BIRT Framework. Besides, it will also be beneficial to actually be able to design and run reports in the "All-in-One" report designer.
@@ -35,3 +37,62 @@ Follow these steps to build the openEQUELLA BIRT plugins.
 13. Start the BIRT designer and follow the section at the top of this document titled "Report Designers".
 
 \* - _Orbit is kind-of the equivalent of a Maven Central for Eclipse plugins, however they have a strict policy on what gets into the repository. Luckily for us they have an XStream plugin (this is actually just a plain XStream jar that has been modified to contain OSGI plugin information). If we needed a dependency that didn't already exist as an OSGI plugin, you'd probably have to manually create one and commit it into the openEQUELLA-reporting-plugin repository. (But there may be a better way)_
+
+### Deployment
+
+#### Signing
+
+##### Generating a new key:
+
+gpg --gen-key (openEQUELLA / openEQUELLA@apereo.org / mysecretpassphrase)
+gpg --list-keys (note the long ID)
+gpg --keyserver http://keys.openpgp.org --send-keys (2A4BDACDF02ED57A325C52A3EA63EF548B65CE99)
+
+##### Using the key I already made:
+
+where you get it: don't know
+`gpg --import oeq_private.key`
+passphrase: (not telling)
+
+For more info, read this:
+https://central.sonatype.org/pages/working-with-pgp-signatures.html
+
+#### Maven
+
+Edit your Maven settings.xml file ( you will need an OSSRH account, sign up to https://issues.sonatype.org, and then ask Aaron or Ian to request access for you)
+<settings>
+...
+<servers>
+...
+<server>
+<id>ossrh</id>
+<username>your-jira-id</username>
+<password>your-jira-pwd</password>
+</server>
+</servers>
+...
+</settings>
+
+For more info, read this:
+https://central.sonatype.org/pages/manual-staging-bundle-creation-and-deployment.html
+
+Note that before deploying the binary, you:
+
+- _Must_ create a javadoc (just an empty index.html in a jar file will do)
+- _Must_ create a sources (just zipped up raw source of each plugin)
+
+Run deploy.bat/deploy.sh script with passphrase, i.e. `deploy mysecretpassphrase` (Which executes the following:)
+
+```
+mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=ossrh -DpomFile=pom.xml -Dfile=bin.jar -Dpackaging=jar -Dfiles=sources.jar,javadoc.jar -Dclassifiers=sources,javadoc -Dtypes=jar,jar -Dpassphrase=mysecretpassphrase
+```
+
+#### Releasing
+
+Login to https://oss.sonatype.org/ (you should already have an account you entered into your Maven settings.xml file)
+
+Click on Staging Repositories on the left.  
+Click on the a staging repository (check the Contents tab on the lower panel to see if it has everything you want).
+Click on Close, and then wait a while before clicking refresh. If the gods are in your favour, it will close for you, otherwise you need to address the errors listed in the Activity tab)
+Click on Release
+WINNING
