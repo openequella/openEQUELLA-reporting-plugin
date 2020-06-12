@@ -44,43 +44,47 @@ Follow these steps to build the openEQUELLA BIRT plugins.
 
 ##### Generating a new key:
 
-gpg --gen-key (openEQUELLA / openEQUELLA@apereo.org / mysecretpassphrase)
-gpg --list-keys (note the long ID)
-gpg --keyserver http://keys.openpgp.org --send-keys (2A4BDACDF02ED57A325C52A3EA63EF548B65CE99)
+1. `gpg --gen-key`  I used (openEQUELLA / openEQUELLA@apereo.org / mysecretpassphrase)
+2. `gpg --list-keys` (Copy the long ID)
+3. `gpg --keyserver http://keys.openpgp.org --send-keys [the long ID]` 
 
 ##### Using the key I already made:
 
-where you get it: don't know
-`gpg --import oeq_private.key`
-passphrase: (not telling)
+1. Get it from... I don't know
+2. `gpg --import oeq_private.key`  passphrase: (not telling)
 
 For more info, read this:
 https://central.sonatype.org/pages/working-with-pgp-signatures.html
 
 #### Maven
 
-Edit your Maven settings.xml file ( you will need an OSSRH account, sign up to https://issues.sonatype.org, and then ask Aaron or Ian to request access for you)
+Edit your Maven settings.xml file (You will need an OSSRH account: sign up to https://issues.sonatype.org, and then ask Aaron or Ian to request access for you)
+
+```xml
 <settings>
-...
-<servers>
-...
-<server>
-<id>ossrh</id>
-<username>your-jira-id</username>
-<password>your-jira-pwd</password>
-</server>
-</servers>
-...
+  ...
+  <servers>
+  ...
+     <server>
+        <id>ossrh</id>
+        <username>your-jira-id</username>
+        <password>your-jira-pwd</password>
+     </server>
+  </servers>
+  ...
 </settings>
+```
 
 For more info, read this:
 https://central.sonatype.org/pages/manual-staging-bundle-creation-and-deployment.html
 
-Note that before deploying the binary, you:
+Note that before deploying each plugin binary, you:
 
 - _Must_ create a javadoc (just an empty index.html in a jar file will do)
 - _Must_ create a sources (just zipped up raw source of each plugin)
+- Use an existing POM file (FIXME: I will add to repository...)
 
+FIXME: bat/sh scripts not yet committed
 Run deploy.bat/deploy.sh script with passphrase, i.e. `deploy mysecretpassphrase` (Which executes the following:)
 
 ```
@@ -89,10 +93,9 @@ mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/stagin
 
 #### Releasing
 
-Login to https://oss.sonatype.org/ (you should already have an account you entered into your Maven settings.xml file)
-
-Click on Staging Repositories on the left.  
-Click on the a staging repository (check the Contents tab on the lower panel to see if it has everything you want).
-Click on Close, and then wait a while before clicking refresh. If the gods are in your favour, it will close for you, otherwise you need to address the errors listed in the Activity tab)
-Click on Release
-WINNING
+1. Login to https://oss.sonatype.org/ (you should already have an account you entered into your Maven settings.xml file)
+2. Click on Staging Repositories on the left.  
+3. Click on the a staging repository (check the Contents tab on the lower panel to see if it has everything you want).
+4. Click on Close, and then wait a while before clicking refresh. If the gods are in your favour, it will close for you, otherwise you need to address the errors listed in the Activity tab)
+5. Click on Release
+6. WINNING
