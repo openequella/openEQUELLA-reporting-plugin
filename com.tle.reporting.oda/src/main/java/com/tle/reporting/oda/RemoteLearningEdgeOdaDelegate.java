@@ -2,12 +2,17 @@ package com.tle.reporting.oda;
 
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.datatools.connectivity.oda.IParameterMetaData;
@@ -42,19 +47,21 @@ public class RemoteLearningEdgeOdaDelegate implements LearningEdgeOdaDelegate
 	public IResultSetExt executeQuery(String queryType, String query, List<Object> indexParams, int maxRows)
 		throws OdaException
 	{
-		PostMethod method = new PostMethod(url);
-		method.addParameter("method", "query");
-		method.addParameter("type", queryType);
-		method.addParameter("query", query);
-		method.addParameter("maxRows", Integer.toString(maxRows));
+		final List<NameValuePair> params = new ArrayList<>();
+		params.add(new BasicNameValuePair("method", "query"));
+		params.add(new BasicNameValuePair("type", queryType));
+		params.add(new BasicNameValuePair("query", query));
+		params.add(new BasicNameValuePair("maxRows", Integer.toString(maxRows)));
 		if( indexParams != null && indexParams.size() > 0 )
 		{
-			method.addParameter("params", xstream.toXML(indexParams));
+			params.add(new BasicNameValuePair("params", xstream.toXML(indexParams)));
 		}
+
+		final HttpPost method = createPOST(url, params);
 		try
 		{
-			httpClient.executeMethod(method);
-			InputStream stream = method.getResponseBodyAsStream();
+			HttpResponse response = httpClient.execute(method);
+			InputStream stream = response.getEntity().getContent();
 			ObjectInputStream ois = new ObjectInputStream(stream);
 			String status = (String) ois.readObject();
 			if( !status.equals(STATUS_OK) )
@@ -78,14 +85,15 @@ public class RemoteLearningEdgeOdaDelegate implements LearningEdgeOdaDelegate
 	@SuppressWarnings({ "unchecked", "nls" })
 	public Map<String, ?> getDatasourceMetadata(String queryType) throws OdaException
 	{
-		PostMethod method = new PostMethod(url);
-		method.addParameter("method", "metadata");
-		method.addParameter("type", queryType);
-
+		final List<NameValuePair> params = new ArrayList<>();
+		params.add(new BasicNameValuePair("method", "metadata"));
+		params.add(new BasicNameValuePair("type", queryType));
+		
+		final HttpPost method = createPOST(url, params);
 		try
 		{
-			httpClient.executeMethod(method);
-			InputStream stream = method.getResponseBodyAsStream();
+			HttpResponse response = httpClient.execute(method);
+			InputStream stream = response.getEntity().getContent();
 			ObjectInputStream ois = new ObjectInputStream(stream);
 			String status = (String) ois.readObject();
 			if( !status.equals(STATUS_OK) )
@@ -113,19 +121,20 @@ public class RemoteLearningEdgeOdaDelegate implements LearningEdgeOdaDelegate
 	public IParameterMetaData getParamterMetadata(String queryType, String query, List<Object> indexParams)
 		throws OdaException
 	{
-		PostMethod method = new PostMethod(url);
-		method.addParameter("method", "paramMetadata");
-		method.addParameter("type", queryType);
-		method.addParameter("query", query);
+		final List<NameValuePair> params = new ArrayList<>();
+		params.add(new BasicNameValuePair("method", "paramMetadata"));
+		params.add(new BasicNameValuePair("type", queryType));
+		params.add(new BasicNameValuePair("query", query));
 		if( indexParams != null && indexParams.size() > 0 )
 		{
-			method.addParameter("params", xstream.toXML(indexParams));
+			params.add(new BasicNameValuePair("params", xstream.toXML(indexParams)));
 		}
 
+		final HttpPost method = createPOST(url, params);
 		try
 		{
-			httpClient.executeMethod(method);
-			InputStream stream = method.getResponseBodyAsStream();
+			HttpResponse response = httpClient.execute(method);
+			InputStream stream = response.getEntity().getContent();
 			ObjectInputStream ois = new ObjectInputStream(stream);
 			String status = (String) ois.readObject();
 			if( !status.equals(STATUS_OK) )
@@ -148,14 +157,16 @@ public class RemoteLearningEdgeOdaDelegate implements LearningEdgeOdaDelegate
 	@SuppressWarnings("nls")
 	public String login(String username, String password) throws OdaException
 	{
-		PostMethod method = new PostMethod(url);
-		method.addParameter("method", "login");
-		method.addParameter("username", username);
-		method.addParameter("password", password);
+		final List<NameValuePair> params = new ArrayList<>();
+		params.add(new BasicNameValuePair("method", "login"));
+		params.add(new BasicNameValuePair("username", username));
+		params.add(new BasicNameValuePair("password", password));
+		
+		final HttpPost method = createPOST(url, params);
 		try
 		{
-			httpClient.executeMethod(method);
-			InputStream stream = method.getResponseBodyAsStream();
+			HttpResponse response = httpClient.execute(method);
+			InputStream stream = response.getEntity().getContent();
 			ObjectInputStream ois = new ObjectInputStream(stream);
 			String status = (String) ois.readObject();
 			if( !status.equals(STATUS_OK) )
@@ -178,4 +189,21 @@ public class RemoteLearningEdgeOdaDelegate implements LearningEdgeOdaDelegate
 		return ""; //$NON-NLS-1$
 	}
 
+	private HttpPost createPOST(String url, List<NameValuePair> params) {
+		return new HttpPost(appendQueryString(url, queryStringNv(params)));
+	}
+
+	private String appendQueryString(String url, String queryString) {
+		return url
+			+ (queryString == null || queryString.equals("")
+				? ""
+				: (url.contains("?") ? '&' : '?') + queryString);
+	  }
+
+	  private String queryStringNv(List<NameValuePair> params) {
+		if (params == null) {
+		  return null;
+		}
+		return URLEncodedUtils.format(params, "utf-8");
+	  }
 }

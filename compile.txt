@@ -1,0 +1,51 @@
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':com.tle.reporting.oda:compileBundleJava'.
+> Could not resolve all files for configuration ':com.tle.reporting.oda:bundleCompileClasspath'.
+   > Could not find org.eclipse.platform:org.eclipse.swt.${osgi.platform}:3.114.0.
+     Searched in the following locations:
+       - file:/D:/Code/openEQUELLA-reporting-plugin/flatlib/org.eclipse.swt.${osgi.platform}-3.114.0.jar
+       - file:/D:/Code/openEQUELLA-reporting-plugin/flatlib/org.eclipse.swt.${osgi.platform}.jar
+       - https://jcenter.bintray.com/org/eclipse/platform/org.eclipse.swt.${osgi.platform}/3.114.0/org.eclipse.swt.${osgi.platform}-3.114.0.pom
+       - https://repo.maven.apache.org/maven2/org/eclipse/platform/org.eclipse.swt.${osgi.platform}/3.114.0/org.eclipse.swt.${osgi.platform}-3.114.0.pom
+     Required by:
+         project :com.tle.reporting.oda > org.eclipse.platform:org.eclipse.swt:3.114.0
+   > Could not find any version that matches org.eclipse:text:[3.3.0,4.0.0).
+     Versions that do not match:
+       - 3.3.0-v20070606-0010
+       - 3.2.0-v20060605-1400
+     Searched in the following locations:
+       - file:/D:/Code/openEQUELLA-reporting-plugin/flatlib/
+       - https://jcenter.bintray.com/org/eclipse/text/maven-metadata.xml
+       - https://repo.maven.apache.org/maven2/org/eclipse/text/maven-metadata.xml
+     Required by:
+         project :com.tle.reporting.oda > org.eclipse.jface:text:3.3.0-v20070606-0010
+   > Could not find any version that matches org.eclipse:swt:[3.3.0,4.0.0).
+     Versions that do not match:
+       - 3.3.0-v3346
+       - 3.2.1-v3235e
+     Searched in the following locations:
+       - file:/D:/Code/openEQUELLA-reporting-plugin/flatlib/
+       - https://jcenter.bintray.com/org/eclipse/swt/maven-metadata.xml
+       - https://repo.maven.apache.org/maven2/org/eclipse/swt/maven-metadata.xml
+     Required by:
+         project :com.tle.reporting.oda > org.eclipse.jface:text:3.3.0-v20070606-0010
+   > Could not find any version that matches org.eclipse:jface:[3.3.0,4.0.0).
+     Versions that do not match:
+       - 3.3.0-I20070606-0010
+       - 3.2.1-M20060908-1000
+     Searched in the following locations:
+       - file:/D:/Code/openEQUELLA-reporting-plugin/flatlib/
+       - https://jcenter.bintray.com/org/eclipse/jface/maven-metadata.xml
+       - https://repo.maven.apache.org/maven2/org/eclipse/jface/maven-metadata.xml
+     Required by:
+         project :com.tle.reporting.oda > org.eclipse.jface:text:3.3.0-v20070606-0010
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 8s

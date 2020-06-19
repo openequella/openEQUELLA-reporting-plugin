@@ -1,5 +1,25 @@
 dependencies {
+	bundleImplementation project (':com.tle.reporting.common')
+	//bundleImplementation 'org.eclipse.platform:org.eclipse.swt.win32.win32.x86_64:'
+	bundleImplementation 'org.eclipse.platform:org.eclipse.swt:3.114.0'
+	bundleImplementation 'com.ibm.icu:icu4j:4.8'
+	bundleImplementation 'com.thoughtworks.xstream:xstream:1.4.12'
+	bundleImplementation 'org.apache.httpcomponents:httpclient:4.5.10'
+	bundleImplementation 'org.eclipse.core:runtime:3.10.0-v20140318-2214'
+	bundleImplementation 'org.eclipse.jface:text:3.3.0-v20070606-0010'
+	bundleImplementation 'org.eclipse:swt:3.3.0-v3346'
+	bundleImplementation 'org.eclipse.datatools.connectivity.oda.design:org.eclipse.datatools.connectivity.oda.design_3.3.4.v201109211529:3.4.101.201811012051'
+	bundleImplementation 'org.eclipse.platform:org.eclipse.swt.win32.win32.x86_64:3.114.0'
+
+
+	
 	implementation project (':com.tle.reporting.common')
-	implementation 'org.eclipse.swt:org.eclipse.swt.win32.win32.x86:4.3'
+	//implementation 'org.eclipse.swt:org.eclipse.swt.win32.win32.x86:4.3'
 	implementation 'org.eclipse.platform:org.eclipse.swt:3.114.0'
+	implementation 'com.ibm.icu:icu4j:4.8'
+	implementation 'com.thoughtworks.xstream:xstream:1.4.12'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.10'
+	implementation 'org.eclipse.core:runtime:3.10.0-v20140318-2214'
+	implementation 'org.eclipse.jface:text:3.3.0-v20070606-0010'
+	implementation 'org.eclipse:swt:3.3.0-v3346'
 }

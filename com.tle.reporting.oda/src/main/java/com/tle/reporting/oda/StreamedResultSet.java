@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.http.client.methods.HttpPost;
 import org.eclipse.datatools.connectivity.oda.IBlob;
 import org.eclipse.datatools.connectivity.oda.IClob;
 import org.eclipse.datatools.connectivity.oda.IResultSetMetaData;
@@ -21,7 +21,7 @@ import com.tle.reporting.MetadataBean;
 public class StreamedResultSet implements IResultSetExt
 {
 	private final MetadataBean metadata;
-	private final PostMethod connection;
+	private final HttpPost connection;
 	private final ObjectInputStream stream;
 	private int maxRows = Integer.MAX_VALUE;
 	private int currentRow;
@@ -30,7 +30,7 @@ public class StreamedResultSet implements IResultSetExt
 	private final Map<String, Integer> columnMappings = new HashMap<String, Integer>();
 	private boolean wasNull;
 
-	public StreamedResultSet(PostMethod connection, ObjectInputStream stream) throws IOException,
+	public StreamedResultSet(HttpPost connection, ObjectInputStream stream) throws IOException,
 		ClassNotFoundException
 	{
 		this.connection = connection;

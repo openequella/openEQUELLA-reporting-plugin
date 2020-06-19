@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -11,15 +16,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
-import org.apache.commons.httpclient.ConnectTimeoutException;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
-import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
-import org.apache.commons.httpclient.params.HttpConnectionParams;
-import org.apache.commons.httpclient.protocol.Protocol;
-import org.apache.commons.httpclient.protocol.SecureProtocolSocketFactory;
+import org.apache.http.client.HttpClient;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.eclipse.datatools.connectivity.oda.IConnection;
 import org.eclipse.datatools.connectivity.oda.IDataSetMetaData;
 import org.eclipse.datatools.connectivity.oda.IQuery;
@@ -100,7 +105,14 @@ public class Connection implements IConnection
 			{
 				if( httpClient == null )
 				{
-					setupRemote();
+					try
+					{
+						setupRemote();
+					} 
+					catch (Exception e)
+					{
+						throw new OdaException(e);
+					}
 				}
 				delegate = new RemoteLearningEdgeOdaDelegate(httpClient, properties, xstream);
 			}
@@ -130,8 +142,9 @@ public class Connection implements IConnection
 	}
 
 	@SuppressWarnings({"deprecation", "nls"})
-	private static synchronized void setupRemote()
+	private static synchronized void setupRemote() throws NoSuchAlgorithmException, KeyManagementException
 	{
+		/*
 		MultiThreadedHttpConnectionManager connectionManager = new MultiThreadedHttpConnectionManager();
 		HttpConnectionManagerParams params = new HttpConnectionManagerParams();
 		params.setDefaultMaxConnectionsPerHost(10);
@@ -158,13 +171,42 @@ public class Connection implements IConnection
 			}
 
 			public Socket createSocket(String arg0, int arg1, InetAddress arg2, int arg3, HttpConnectionParams arg4)
-				throws IOException, UnknownHostException, ConnectTimeoutException
+				throws IOException, UnknownHostException
 			{
 				return defaultSSL.createSocket(arg0, arg1, arg2, arg3);
 			}
-		}, 443));
+		}, 443));*/
+		X509TrustManager trustManager =
+        new X509TrustManager() {
+          final X509Certificate[] acceptedIssuers = new X509Certificate[] {};
+
+          @Override
+          public X509Certificate[] getAcceptedIssuers() {
+            return acceptedIssuers;
+          }
+
+          @Override
+          public void checkServerTrusted(X509Certificate[] chain, String authType)
+              throws CertificateException {
+            // Nothing to do here
+          }
+
+          @Override
+          public void checkClientTrusted(X509Certificate[] chain, String authType)
+              throws CertificateException {
+            // Nothing to do here
+          }
+        };
+		SSLContext context = SSLContext.getInstance("TLS");
+    	context.init(null, new TrustManager[] {trustManager}, new SecureRandom());
+		SSLSocketFactory socketFactory =
+        new SSLSocketFactory(context, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+		PoolingClientConnectionManager conMan = new PoolingClientConnectionManager();
+		conMan.getSchemeRegistry().register(new Scheme("https", 443, socketFactory));
+		conMan.setMaxTotal(10000);
+		conMan.setDefaultMaxPerRoute(1000);
 		xstream = new XStream();
-		httpClient = new HttpClient(connectionManager);
+		httpClient = new DefaultHttpClient(conMan);
 	}
 
 	public LearningEdgeOdaDelegate getDelegate()

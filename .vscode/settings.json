@@ -1,8 +1,13 @@
 {
-	"files.exclude": {
-		"**/.classpath": true,
-		"**/.project": true,
-		"**/.settings": true,
-		"**/.factorypath": true
-	}
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "java.import.gradle.arguments": "",
+  "java.import.gradle.home": "D:\\Dev\\Gradle\\gradle-6.3",
+  "java.import.gradle.jvmArguments": "",
+  "java.import.gradle.user.home": "C:\\Users\\Aaron",
+  "java.import.gradle.version": "6.3"
 }

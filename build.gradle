@@ -1,10 +1,14 @@
+import aQute.bnd.gradle.Bundle
+
 plugins {
         id 'base'
-        id 'java-library'
+        id 'java'
         id 'groovy'
         //id 'com.diffplug.swt.nativedeps' version '3.22.0'
         //id 'eclipse'
-        id 'biz.aQute.bnd.builder'
+        id 'nebula.lint' version '16.8.0'
+        id 'biz.aQute.bnd.builder' //apply false
+        id 'biz.aQute.bnd.workspace'
     }
 
 /* Doesn't work */
@@ -20,23 +24,48 @@ configurations.all {
     }
 }
  */
-import aQute.bnd.gradle.Bundle
 
-tasks.register('bundle',  Bundle) {
-  from sourceSets.main.output
+ apply plugin: 'base' 
+
+ sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+    }
 }
 
+repositories {
+        //mavenLocal()
+        flatDir {
+            dirs 'flatlib'
+        }
+}
+
+
 allprojects {
-    apply plugin: 'base'
-    apply plugin: 'java-library'    
-    apply plugin: 'groovy'
+    //
+     apply plugin: 'base' 
+apply plugin: 'nebula.lint'
+apply plugin: 'java' 
+apply plugin: 'groovy'
+   
+    
     //apply plugin: 'com.diffplug.swt.nativedeps'
     //apply plugin: 'eclipse'
-    
+    //apply plugin: 'biz.aQute.bnd.builder'
 
     repositories {
-        mavenLocal()
+        //mavenLocal()
+        flatDir {
+            dirs '../flatlib'
+        }
+
+        //maven {
+        //    url "file:///D:/Code/openEQUELLA-reporting-plugin/libs"
+        //}
         jcenter()
+        mavenCentral()
         //maven { url 'http://maven-eclipse.github.io/maven' }
     }
     /*
@@ -45,6 +74,7 @@ allprojects {
     } */
 
     dependencies {
+        compile 'org.codehaus.groovy:groovy-all:2.5.10'
         //implementation 'org.eclipse.platform:org.eclipse.swt.win32.win32.x86_64:+'
         //implementation 'org.eclipse.birt.runtime:org.eclipse.datatools.connectivity.oda:3.5.0.201603142002'
         
@@ -57,5 +87,53 @@ allprojects {
 
 subprojects {
     
+    sourceSets {
+        bundle {
+            java {
+                srcDir 'src/main/java'
+            }
+        }
+    } 
+
+    configurations {
+        bundleCompile
+    }
+    
+    dependencies {
+        bundleImplementation 'org.eclipse.birt.runtime:org.eclipse.datatools.connectivity.oda:3.3.4.v201212070447'
+        bundleImplementation 'org.eclipse.birt.runtime:org.eclipse.datatools.connectivity.oda.design:3.3.6.v201212070447'
+
+        implementation 'org.eclipse.birt.runtime:org.eclipse.datatools.connectivity.oda:3.3.4.v201212070447'
+        implementation 'org.eclipse.birt.runtime:org.eclipse.datatools.connectivity.oda.design:3.3.6.v201212070447'
+        //implementation 'org.eclipse.birt:birt-osgi:3.7.2'
+    }
+
+
+    tasks.register('bundle', Bundle) {
+        description 'Bundle'
+        //group 'build'
+        from sourceSets.bundle.output
+        bndfile = 'build.bnd'
+        //sourceSet = sourceSets.main
+        //classpath = configurations.compileClasspath
+        //classpath jar
+        //version = '1.1.0'
+    }
+/* 
+    artifacts {
+        runtimeOnly bundle
+        archives bundle
+    }*/
+
+    if (plugins.hasPlugin('biz.aQute.bnd')) {
+
+        println "### Project ${name} has BndPlugin applied"
+
+    }
 }
 
+if (plugins.hasPlugin('biz.aQute.bnd.workspace')) {
+
+  println "### Project ${name} has BndWorkspacePlugin applied"
+
+}

@@ -9,11 +9,12 @@
 pluginManagement {
   plugins {
     id 'biz.aQute.bnd.builder' version '5.0.1'
+    id 'biz.aQute.bnd.workspace' version '5.0.1'
   }
 }
 
 rootProject.name = 'com.tle.reporting'
 include 'com.tle.reporting.common'
 include 'com.tle.reporting.oda'
-include 'com.tle.reporting.oda.connectors'
+//include 'com.tle.reporting.oda.connectors'
 

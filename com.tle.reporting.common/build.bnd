@@ -1,0 +1,15 @@
+-sources: true
+-exportcontents: com.tle.reporting.*
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ${project.group}:${task.archiveBaseName}
+Bundle-SymbolicName: com.tle.reporting.common
+Bundle-Version: 6.3.0.20141006
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
+Require-Bundle: org.eclipse.datatools.connectivity.oda
+Project-Name: ${project.name}
+Project-Dir: ${project.dir}
+Project-Output: ${project.output}
+Project-Sourcepath: ${project.sourcepath}
+Project-Buildpath: ${project.buildpath}
