@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: TLE ODA Plug-in
+Bundle-Name: openEQUELLA ODA Plug-in
 Bundle-SymbolicName: com.tle.reporting.oda;singleton:=true
-Bundle-Version: 6.3.0.20141006
+Bundle-Version: 2020.2.0.2020052901
 Require-Bundle: org.eclipse.ui;resolution:=optional,
  org.eclipse.datatools.connectivity.oda.design.ui;resolution:=optional,
  org.eclipse.jface.text;resolution:=optional,
@@ -13,17 +13,48 @@ Require-Bundle: org.eclipse.ui;resolution:=optional,
 Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: com.tle.reporting.oda.ui.TLEOdaPlugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: com.tle.reporting.oda,
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: com.tle.reporting.oda;
+  uses:="com.tle.reporting,
+   org.apache.commons.httpclient,
+   org.apache.commons.httpclient.methods,
+   com.ibm.icu.util,
+   org.eclipse.datatools.connectivity.oda,
+   com.thoughtworks.xstream,
+   javax.net,
+   javax.net.ssl,
+   org.eclipse.datatools.connectivity.oda.spec",
  com.tle.reporting.oda.i18n,
- com.tle.reporting.oda.ui,
+ com.tle.reporting.oda.ui;
+  uses:="org.osgi.framework,
+   org.eclipse.datatools.connectivity.oda.design,
+   org.eclipse.datatools.connectivity.oda.design.ui.wizards,
+   org.eclipse.core.runtime,
+   org.eclipse.jface.resource,
+   com.tle.reporting.oda.ui.jdbc.ui.editors,
+   org.eclipse.swt.widgets,
+   org.eclipse.jface.viewers",
  com.tle.reporting.oda.ui.icons,
- com.tle.reporting.oda.ui.jdbc.ui.editors,
- com.tle.reporting.oda.ui.jdbc.ui.model,
- com.tle.reporting.oda.ui.jdbc.ui.preference,
- com.tle.reporting.oda.ui.jdbc.ui.provider,
- com.tle.reporting.oda.ui.jdbc.ui.util,
- com.tle.reporting.oda.webservice,
+ com.tle.reporting.oda.ui.jdbc.ui.editors;
+  uses:="org.eclipse.jface.text.contentassist,
+   org.eclipse.datatools.connectivity.oda.design,
+   org.eclipse.datatools.connectivity.oda.design.ui.wizards,
+   org.eclipse.jface.action,
+   org.eclipse.jface.text.source,
+   org.eclipse.jface.text.presentation,
+   org.eclipse.jface.text,
+   org.eclipse.swt.widgets,
+   org.eclipse.datatools.connectivity.oda,
+   org.eclipse.jface.text.rules",
+ com.tle.reporting.oda.ui.jdbc.ui.model;uses:="org.eclipse.swt.graphics,org.eclipse.swt.widgets",
+ com.tle.reporting.oda.ui.jdbc.ui.preference;uses:="org.eclipse.ui,org.eclipse.swt.widgets,org.eclipse.jface.preference",
+ com.tle.reporting.oda.ui.jdbc.ui.provider;uses:="org.eclipse.datatools.connectivity.oda.design",
+ com.tle.reporting.oda.ui.jdbc.ui.util;uses:="org.eclipse.swt.graphics,org.eclipse.swt.widgets,org.eclipse.jface.dialogs",
+ com.tle.reporting.oda.webservice;
+  uses:="org.eclipse.datatools.connectivity.oda.design.ui.wizards,
+   org.eclipse.jface.preference,
+   org.eclipse.swt.widgets,
+   org.eclipse.jface.wizard",
  org.eclipse.birt.report.data.oda.jdbc.ui.nls
 Import-Package: com.thoughtworks.xstream,
  org.apache.commons.codec.binary;version="1.3.0",
@@ -31,3 +62,4 @@ Import-Package: com.thoughtworks.xstream,
  org.apache.commons.httpclient.methods,
  org.apache.commons.httpclient.params,
  org.apache.commons.httpclient.protocol
+Bundle-Vendor: Apereo

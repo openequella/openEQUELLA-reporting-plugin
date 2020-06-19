@@ -1,2 +1,9 @@
 # openEQUELLA Reporting Plugin
-Details for this project can be found in the openEQUELLA [docs repo](https://equella.github.io/), specifically, the [reporting tutorials](https://github.com/equella/equella.github.io/tree/master/tutorials/reporting).
+
+## Report Designers
+
+For help with designing BIRT reports using these plugins, visit the [reporting tutorials](https://openequella.github.io/tutorials/reporting/index.html).
+
+## Developers
+
+See the documentation at [DEVELOPERS.md](DEVELOPERS.md)

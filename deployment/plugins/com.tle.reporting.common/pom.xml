@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.openequella</groupId>
+    <artifactId>reporting-common</artifactId>
+    <packaging>jar</packaging>
+    <description>openEQUELLA common BIRT plugin</description>
+    <url>https://github.com/openequella/openEQUELLA-reporting-plugin</url>
+    <version>2020.2.0.2020052905</version>
+    <licenses>
+        <license>
+            <name>Apache2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <name>reporting-common</name>
+    <organization>
+        <name>openEQUELLA</name>
+        <url>https://github.com/openequella/</url>
+    </organization>
+    <scm>
+        <url>https://github.com/openequella/openEQUELLA-reporting-plugin</url>
+        <connection>scm:git@github.com:openequella/openEQUELLA-reporting-plugin.git</connection>
+    </scm>
+    <developers>
+        <developer>
+            <id>abidingotter</id>
+            <name>Aaron Holland</name>
+        </developer>
+    </developers>
+    <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/openequella/openEQUELLA-reporting-plugin</url>
+    </repository>
+  </distributionManagement>
+</project>

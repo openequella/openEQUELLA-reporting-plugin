@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="openEQUELLA_Reporting_Plugins"
+      label="OpenEQUELLA_Reporting_Plugins"
+      version="2020.2.0.2020052901"
+      provider-name="Apereo">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.datatools.connectivity.oda"/>
+      <import plugin="org.apache.commons.codec"/>
+      <import plugin="org.apache.commons.httpclient"/>
+      <import plugin="org.eclipse.birt.report.engine" version="2.3.1" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="com.tle.reporting.common"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.tle.reporting.oda"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.tle.reporting.oda.connectors"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.thoughtworks.xstream"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xmlpull"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
