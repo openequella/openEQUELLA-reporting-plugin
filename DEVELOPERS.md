@@ -38,14 +38,13 @@ Follow these steps to build the openEQUELLA BIRT plugins.
 
 #### Generating a new key:
 
-1. `gpg --gen-key`  I used (openEQUELLA / openEQUELLA@apereo.org / mysecretpassphrase)
+1. `gpg --gen-key` I used (openEQUELLA / openEQUELLA@apereo.org / mysecretpassphrase)
 2. `gpg --list-keys` (Copy the long ID)
-3. `gpg --keyserver http://keys.openpgp.org --send-keys [the long ID]` 
+3. `gpg --keyserver http://keys.openpgp.org --send-keys [the long ID]`
 
 #### Using the key I already made:
 
-1. Get it from... I don't know
-2. `gpg --import oeq_private.key`  passphrase: (not telling)
+1. Probably not necessary...
 
 For more info, read this:
 https://central.sonatype.org/pages/working-with-pgp-signatures.html
@@ -72,24 +71,37 @@ Edit your Maven settings.xml file (You will need an OSSRH account: sign up to ht
 For more info, read this:
 https://central.sonatype.org/pages/manual-staging-bundle-creation-and-deployment.html
 
+#### Plugins
+
 Note that before deploying each plugin binary, you:
 
-- _Must_ create a javadoc (just an empty index.html in a jar file will do)
-- _Must_ create a sources (just zipped up raw source of each plugin)
-- Use an existing POM file (FIXME: I will add to repository...)
+1. Copy the generated com.tle.reporting.\* plugins into the corresponding directory in [repo root]/deployment/plugins and rename to bin.jar
+2. Update the version number in the pom.xml file in each of these directories.
+3. Create a sources.jar (just zipped up raw source of the plugin)
+4. Run the `deploy.bat` (or `deploy.sh`) script in the [repo root]/deployment/plugins directory (Make sure you have Maven installed and have the mvn binary on your PATH.)
+   On Windows, this will spawn 3 new command windows, so pay attention to whether they all succeed or not.
+   I haven't tested \*nix script, so help here would be appreciated.
 
-FIXME: bat/sh scripts not yet committed
-Run deploy.bat/deploy.sh script with passphrase, i.e. `deploy mysecretpassphrase` (Which executes the following:)
+#### Birt Framework
 
-```
-mvn gpg:sign-and-deploy-file -Durl=https://oss.sonatype.org/service/local/staging/deploy/maven2/ -DrepositoryId=ossrh -DpomFile=pom.xml -Dfile=bin.jar -Dpackaging=jar -Dfiles=sources.jar,javadoc.jar -Dclassifiers=sources,javadoc -Dtypes=jar,jar -Dpassphrase=mysecretpassphrase
-```
+This will need to be done if you want to upgrade the version of the BIRT binaries used by the openEQUELLA server.
+
+1. Zip up the contents on the plugins directory of the latest BIRT framework. Rename the zip file to birt.zip and copy into [repo root]/deployment/birt-framework
+2. Update the pom.xml in [repo root]/deployment/birt-framework
+3. Run the `deploy.bat` (or `deploy.sh`) in that directory. Note that this might take a little while due to the size of the zip.
 
 ### Releasing
 
+#### Plugins
+
 1. Login to https://oss.sonatype.org/ (you should already have an account you entered into your Maven settings.xml file)
-2. Click on Staging Repositories on the left.  
-3. Click on the a staging repository (check the Contents tab on the lower panel to see if it has everything you want).
-4. Click on Close, and then wait a while before clicking refresh. If the gods are in your favour, it will close for you, otherwise you need to address the errors listed in the Activity tab)
+2. Click on Staging Repositories on the left.
+3. Click on a staging repository (Check the Contents tab on the lower panel to see if it has everything you just deployed).
+4. Click on Close, and then wait a while before clicking refresh. If the gods are in your favour, and the moon is in right phase, then it will close for you. Otherwise you need to address the errors listed in the Activity tab.
 5. Click on Release
 6. WINNING
+
+## Including in openEQUELLA
+
+1. Update the version numbers in `build.sbt` file at [openEQUELLA rep]/Source/Plugins/Birt/org.eclipse.birt.osgi
+2. Build openEQUELLA as you normally would, noting that there will be some delay between releasing your binaries on OSS and it becoming available on Maven Central. You may need to wait up to a few hours before the build process can find your binaries.

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.openequella</groupId>
+    <artifactId>birt-framework</artifactId>
+    <packaging>jar</packaging>
+    <description>BIRT Framework Binaries</description>
+    <url>https://github.com/openequella/openEQUELLA-reporting-plugin</url>
+    <version>4.6.0.20160607212201</version>
+    <licenses>
+        <license>
+            <name>EPL</name>
+            <url>http://www.eclipse.org/legal/epl/notice.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <name>birt-framework</name>
+    <organization>
+        <name>openEQUELLA</name>
+        <url>https://github.com/openequella/</url>
+    </organization>
+    <scm>
+        <url>https://download.eclipse.org/birt/downloads/#runtime</url>
+        <connection>https://download.eclipse.org/birt/downloads/#runtime</connection>
+    </scm>
+    <developers>
+        <developer>
+            <id>abidingotter</id>
+            <name>Aaron Holland</name>
+        </developer>
+    </developers>
+</project>
